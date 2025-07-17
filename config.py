@@ -14,7 +14,7 @@ API_KEY = "在此处填写APIKEY"    # 可同时填写多个API-KEY，用英文�
 DASHSCOPE_API_KEY = "" # 阿里灵积云API_KEY（用于接入qwen-max，dashscope-qwen3-14b，dashscope-deepseek-r1等）
 
 # [step 1-3]>> ( 接入 deepseek-reasoner, 即 deepseek-r1 ) 深度求索(DeepSeek) API KEY，默认请求地址为"https://api.deepseek.com/v1/chat/completions"
-DEEPSEEK_API_KEY = ""
+DEEPSEEK_API_KEY = "sk-92cfcae01a8e4bbf897758114ace5602"
 
 # [step 2]>> 改为True应用代理。如果使用本地或无地域限制的大模型时，此处不修改；如果直接在海外服务器部署，此处不修改
 USE_PROXY = False
@@ -286,7 +286,7 @@ MATHPIX_APPKEY = ""
 
 
 # DOC2X的PDF解析服务，注册账号并获取API KEY: https://doc2x.noedgeai.com/login
-DOC2X_API_KEY = ""
+DOC2X_API_KEY = "sk-4yydgfys4ibf22ib7gsyoghsb4ewejab"
 
 
 # 自定义API KEY格式
