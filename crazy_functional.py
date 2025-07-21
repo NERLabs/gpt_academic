@@ -50,8 +50,16 @@ def get_crazy_functions():
     from crazy_functions.SourceCode_Comment import 注释Python项目
     from crazy_functions.SourceCode_Comment_Wrap import SourceCodeComment_Wrap
     from crazy_functions.VideoResource_GPT import 多媒体任务
+    from crazy_functions.md抽取 import 解析MD实体识别
 
     function_plugins = {
+        "解析MD实体识别核心": {
+            "Group": "编程",
+            "Color": "stop",
+            "AsButton": False,
+            "Info": "解析JSON文件并识别实体 | 输入参数为文件夹路径",
+            "Function": HotReload(解析MD实体识别),
+        },
         "多媒体智能体": {
             "Group": "智能体",
             "Color": "stop",

@@ -1,7 +1,8 @@
 # From project chatglm-langchain
 
 
-from langchain.document_loaders import UnstructuredFileLoader
+# from langchain.document_loaders import UnstructuredFileLoader
+from langchain_community.document_loaders import UnstructuredFileLoade
 from langchain.text_splitter import CharacterTextSplitter
 import re
 from typing import List

@@ -68,7 +68,7 @@ def 解析源代码新(file_manifest, project_folder, llm_kwargs, plugin_kwargs,
         current_iteration_focus = ', '.join(this_iteration_files)
         if summary_batch_isolation: focus = current_iteration_focus
         else:                       focus = previous_iteration_files_string
-        i_say = f'用一张Markdown表格简要描述以下文件的功能：{focus}。根据以上分析，用一句话概括程序的整体功能。'
+        i_say = f'用一张Markdown表格简要描述以下文件的功能：{focus}。根据以上分析，用一句话概括程序的整体功能。将项目文件归入到这几个文件夹中_1CONFIG、_2DATA、_3DATA_PROCESS、_4MODELS、_5TRAIN、_6EVALUATE、_7PREDICT、_8TOOL、_9LOG"'
         if last_iteration_result != "":
             sys_prompt_additional = "已知某些代码的局部作用是:" + last_iteration_result + "\n请继续分析其他源代码，从而更全面地理解项目的整体功能。"
         else:
@@ -81,7 +81,7 @@ def 解析源代码新(file_manifest, project_folder, llm_kwargs, plugin_kwargs,
         result = yield from request_gpt_model_in_new_thread_with_ui_alive(
             inputs=inputs, inputs_show_user=inputs_show_user, llm_kwargs=llm_kwargs, chatbot=chatbot,
             history=this_iteration_history_feed,   # 迭代之前的分析
-            sys_prompt="你是一个程序架构分析师，正在分析一个项目的源代码。" + sys_prompt_additional)
+            sys_prompt="你是一个程序架构分析师，正在分析一个项目的源代码。将项目文件归入到这几个文件夹中_1CONFIG、_2DATA、_3DATA_PROCESS、_4MODELS、_5TRAIN、_6EVALUATE、_7PREDICT、_8TOOL、_9LOG" + sys_prompt_additional)
 
         diagram_code = make_diagram(this_iteration_files, result, this_iteration_history_feed)
         summary = "请用一句话概括这些文件的整体功能。\n\n" + diagram_code
@@ -91,7 +91,7 @@ def 解析源代码新(file_manifest, project_folder, llm_kwargs, plugin_kwargs,
             llm_kwargs=llm_kwargs,
             chatbot=chatbot,
             history=[i_say, result],   # 迭代之前的分析
-            sys_prompt="你是一个程序架构分析师，正在分析一个项目的源代码。" + sys_prompt_additional)
+            sys_prompt="你是一个程序架构分析师，正在分析一个项目的源代码。将项目文件归入到这几个文件夹中_1CONFIG、_2DATA、_3DATA_PROCESS、_4MODELS、_5TRAIN、_6EVALUATE、_7PREDICT、_8TOOL、_9LOG" + sys_prompt_additional)
 
         report_part_2.extend([i_say, result])
         last_iteration_result = summary_result

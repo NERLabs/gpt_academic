@@ -139,7 +139,7 @@ DARK_MODE = True
 
 
 # 发送请求到OpenAI后，等待多久判定为超时
-TIMEOUT_SECONDS = 30
+TIMEOUT_SECONDS = 300
 
 
 # 网页的端口, -1代表随机端口
@@ -151,7 +151,7 @@ AUTO_OPEN_BROWSER = True
 
 
 # 如果OpenAI不响应（网络卡顿、代理失败、KEY失效），重试的次数限制
-MAX_RETRY = 2
+MAX_RETRY = 20
 
 
 # 插件分类默认选项

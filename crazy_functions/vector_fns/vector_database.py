@@ -9,7 +9,8 @@ import threading
 import numpy as np
 from toolbox import Singleton
 from loguru import logger
-from langchain.vectorstores import FAISS
+# from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain.docstore.document import Document
 from typing import List, Tuple
 from crazy_functions.vector_fns.general_file_loader import load_file
@@ -217,7 +218,7 @@ class LocalDocQA:
                                         score_threshold=VECTOR_SEARCH_SCORE_THRESHOLD,
                                         vector_search_top_k=VECTOR_SEARCH_TOP_K, chunk_size=CHUNK_SIZE,
                                         text2vec=None):
-        self.vector_store = FAISS.load_local(vs_path, text2vec)
+        self.vector_store = FAISS.load_local(vs_path, text2vec,allow_dangerous_deserialization=True )
         self.vector_store.chunk_content = chunk_content
         self.vector_store.score_threshold = score_threshold
         self.vector_store.chunk_size = chunk_size
@@ -280,7 +281,8 @@ class knowledge_archive_interface():
             # < -------------------预热文本向量化模组--------------- >
             from toolbox import ProxyNetworkActivate
             logger.info('Checking Text2vec ...')
-            from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+            # from langchain.embeddings.huggingface import HuggingFaceEmbeddings 
+            from langchain_community.embeddings import HuggingFaceEmbeddings
             with ProxyNetworkActivate('Download_LLM'):    # 临时地激活代理网络
                 self.text2vec_large_chinese = HuggingFaceEmbeddings(model_name="GanymedeNil/text2vec-large-chinese")
 
